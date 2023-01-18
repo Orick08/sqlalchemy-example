@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 
 
-engine = create_engine('sqlite:://zoo.db', echo=False)
+engine = create_engine('sqlite:///zoo.db', echo=False)
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
@@ -47,3 +47,7 @@ class Logbook(Base):
         Animal ID = {self.animal_id}\r
         Notes = {self.notes}
         """
+
+
+if __name__ == "__main__":
+    Base.metadata.create_all(engine)
