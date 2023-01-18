@@ -18,7 +18,8 @@ class Animal(Base):
     habitat = Column(String)
     # Should have the same name as the other class
     # back populates should be like this class __tablename__
-    logs = relationship("Logbook", back_populates="animal")
+    logs = relationship("Logbook", back_populates="animal",
+                        cascade="all, delete, delete-orphan")
 
     def __repr__(self):
         return f"""
